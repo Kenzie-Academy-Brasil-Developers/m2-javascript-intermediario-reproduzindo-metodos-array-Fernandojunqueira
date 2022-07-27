@@ -9,10 +9,22 @@ function callbackMap(element, index, array) {
 }
 
 function map(array, callback) {
-  //sua lógica
+
+  const newArray = []
+
+  for( let i = 0; i < array.length; i++){
+
+    const element = array[i]
+    const index   = i
+    const lista   = array
+
+    const resultCallback = callback(element,index,lista)
+    newArray.push(resultCallback)
+  }
+  return newArray
 }
 
-//console.table(map(arrayMap, callbackMap));
+console.table(map(arrayMap, callbackMap));
 
 //Método Filter ---------
 
@@ -27,10 +39,26 @@ function callbackFilter(element, index, array) {
 }
 
 function filter(array, callback) {
-  //sua lógica
+
+  const newArray = []
+  
+  for(let i = 0; i < array.length; i++){
+
+    const element = array[i]
+    const index   = i
+    const lista   = array
+
+    const resultCallback = callback(element,index,lista)
+    if(resultCallback == true){
+
+      newArray.push(array[i])
+    }
+
+  }
+  return newArray
 }
 
-//console.log(filter(arrayFilter, callbackFilter));
+console.log(filter(arrayFilter, callbackFilter));
 
 //Método Reduce ---------
 
@@ -43,8 +71,17 @@ function callbackReduce(acumulator, valorAtual) {
 }
 
 function reduce(array, callback, initialValue = 0) {
-  //sua lógica
+  
+  let acumulador = initialValue
+
+  for( let i = 0; i < array.length; i++){
+
+    acumulador+= callback(0,array[i])
+
+
+  }
+  return acumulador
 }
 
-// console.log(reduce(arrayReduce, callbackReduce));
-// console.log(reduce(arrayReduce, callbackReduce, 50));
+ console.log(reduce(arrayReduce, callbackReduce));
+ console.log(reduce(arrayReduce, callbackReduce, 50));
